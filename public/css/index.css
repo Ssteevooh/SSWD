@@ -45,3 +45,17 @@
     max-width: 100px;
     max-height: 100px;
   }
+
+  .inputForm{
+    width: 60vw;
+    margin-left: 20vw;
+  }
+
+  .tableMargins{
+    width: 90vw;
+    margin-left: 5vw;
+  }
+
+  .inputFormLabel{
+    margin-top: 5px;
+  }

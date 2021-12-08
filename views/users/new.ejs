@@ -1,22 +1,23 @@
-<div class="data-form">
+<div class="data-form inputForm">
   <form class="form-signin" action="/users/create" method="POST">
     <h2 class="form-signin-heading">Create a new user:</h2>
-    <label for="inputFirstName">First Name <b class="d-inline text-danger">*</b> </label>
+
+    <label class="inputFormLabel" for="inputFirstName">First Name <b class="d-inline text-danger">*</b> </label>
     <input type="text" name="first" id="inputFirstName" class="form-control" placeholder="First..." autofocus required>
 
-    <label for="inputLastName">Last Name <b class="d-inline text-danger">*</b> </label> 
+    <label class="inputFormLabel" for="inputLastName">Last Name <b class="d-inline text-danger">*</b> </label> 
     <input type="text" name="last" id="inputLastName" class="form-control" placeholder="Last..." required>
 
-    <label for="inputPassword">Password <b class="d-inline text-danger">*</b> </label>
+    <label class="inputFormLabel" for="inputPassword">Password <b class="d-inline text-danger">*</b> </label>
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password..." required>
 
-    <label for="inputEmail">Email address <b class="d-inline text-danger">*</b></label>
+    <label class="inputFormLabel" for="inputEmail">Email address <b class="d-inline text-danger">*</b></label>
     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address..." required>
 
-    <label for="inputPhoneNumber">Phone number</label>
+    <label class="inputFormLabel" for="inputPhoneNumber">Phone number</label>
     <input type="text" name="phone" id="inputPhoneNumber" class="form-control" placeholder="Phone number...">
 
-    <label for="inputZipCode">Zip Code</label>
+    <label class="inputFormLabel" for="inputZipCode">Zip Code</label>
     <input type="text" name="zipCode" id="inputZipCode" pattern="\d*" class="form-control" placeholder="Zip Code...">
     
     <b class="d-inline text-danger">* Fields are required</b>

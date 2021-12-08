@@ -1,21 +1,22 @@
 <% if (loggedIn) { %>
 
-<div class="data-form">
+<div class="data-form inputForm">
     <form class="form-signin" action="/products/create" method="POST">
       <h2 class="form-signin-heading">Create a new product:</h2>
       
-      <label for="inputName">Name <b class="d-inline text-danger">*</b> </label>
+      <label class="inputFormLabel" for="inputName">Name <b class="d-inline text-danger">*</b> </label>
       <input type="text" name="name" id="inputName" class="form-control" placeholder="Name..." autofocus>
 
-      <label for="inputDescription">Description <b class="d-inline text-danger">*</b> </label>
+      <label class="inputFormLabel" for="inputDescription">Description <b class="d-inline text-danger">*</b> </label>
       <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description..." required>
 
-      <label for="inputImage">Image string </label>
+      <label class="inputFormLabel" for="inputImage">Image string </label>
       <input type="text" name="image" id="inputImage" class="form-control" placeholder="Link to image...">
 
-      <label for="inputOwner">Owner <b class="d-inline text-danger">*</b></label>
+      <label class="inputFormLabel" for="inputOwner">Owner <b class="d-inline text-danger">*</b></label>
       <input type="text" value="<%=currentUser.information%>" disabled="true" name="owner" id="inputOwner" class="form-control" placeholder="Owner" required>
 
+      <br />
       <b class="d-inline text-danger">* Fields are required</b>
       <br />
       <br />

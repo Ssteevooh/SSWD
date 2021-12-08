@@ -1,6 +1,6 @@
-<h1 class="center">Product Data for <%= product.name %></h1>
-
-<table class="table">
+<h1 class="center" style="margin-left: 5vw;">Product Data for <%= product.name %></h1>
+<br />
+<table class="table" style="width: 90vw; margin-left: 5vw; box-shadow: 0 0 10px #00000070;">
   <tr>
     <th>Name</th>
     <td>
@@ -16,7 +16,7 @@
   <tr>
     <th>Image</th>
     <td>
-      <img class="tableImages" src="<%= product.image%>" alt="">
+      <img class="tableImages" src="<%=product.image%>" alt="">
     </td>
   </tr>
   <tr>
@@ -26,3 +26,19 @@
     </td>
   </tr>
 </table>
+
+<div style="margin-left: 5vw;">
+  <a
+    class="btn btn-info w-10"
+    class="button"
+    href="<%=`/products/${product._id}/edit`%>">
+    Edit
+  </a>
+  <a
+    class="btn btn-danger w-10"
+    class="button"
+    href="<%= `/products/${product._id}/delete?_method=DELETE` %>"
+    onclick="return confirm('Are you sure you want to delete this record?')">
+    Delete
+  </a>
+</div>

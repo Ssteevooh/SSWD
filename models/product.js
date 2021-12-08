@@ -27,13 +27,10 @@ const productSchema = mongoose.Schema({
 
 productSchema.pre("save", function(next) {
     let product = this;
-    console.log(product);
     User.findById(product.owner)
         .then(user => {
-          if(user.ownProducts === undefined) {
-              user.ownProducts = []
-          }
           user.ownProducts.push(product._id);
+          user.save();
           next();
         })
         .catch(error => {
