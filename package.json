@@ -11,7 +11,7 @@
     "template",
     "ejs"
   ],
-  "author": "Pekka Lehtola ",
+  "author": "Pekka Lehtola & Steve Hommy ",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.14"
