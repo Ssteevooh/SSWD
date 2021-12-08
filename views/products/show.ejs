@@ -1,0 +1,28 @@
+<h1 class="center">Product Data for <%= product.name %></h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <td>
+      <%= product.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>
+      <%= product.description%>
+    </td>
+  </tr>
+  <tr>
+    <th>Image</th>
+    <td>
+      <img class="tableImages" src="<%= product.image%>" alt="">
+    </td>
+  </tr>
+  <tr>
+    <th>Owner</th>
+    <td>
+      <%= product.ownerEmail%>
+    </td>
+  </tr>
+</table>

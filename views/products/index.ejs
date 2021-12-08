@@ -1,0 +1,31 @@
+<h2>All products</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% product.forEach(product => { %>
+    <tr>
+      <td style="vertical-align: middle;">
+        <a href="<%= `/products/${product._id}` %>">
+          <%= product.name %>
+        </a>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= product.description %>
+      </td>
+      <td style="vertical-align: middle;">
+        <img class="tableImages" src="<%= product.image%>" alt="">
+      </td>
+      <td style="vertical-align: middle;">
+        <%= product.ownerEmail%>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

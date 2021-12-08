@@ -2,8 +2,8 @@ const express = require('express');
 const layouts = require('express-ejs-layouts');
 const router = express.Router()
 const mongoose = require("mongoose");
-const Subscriber = require("./models/subscriber");
-const subscriberController = require("./controllers/subscriberController");
+const Product = require("./models/product");
+const productController = require("./controllers/productController");
 const userController = require("./controllers/userController");
 const app = express();
 const homeController = require('./controllers/homeController');
@@ -16,9 +16,9 @@ const passport = require("passport");
 const User = require("./models/user");
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost:27017/recipe_db",
-  { useNewUrlParser: true }
-);
+const uri = "mongodb+srv://admin:admin@sswd.pbkom.mongodb.net/toril_taas?retryWrites=true&w=majority";
+
+mongoose.connect(uri, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
@@ -30,7 +30,7 @@ db.once("open", (err) => {
 });
 
 
-app.set('port', process.env.PORT || 5006);
+app.set('port', process.env.PORT || 3000);
 
 app.set('view engine', 'ejs');
 
@@ -75,10 +75,11 @@ router.use(layouts);
 
 router.get('/', homeController.respondWithName);
 router.get('/media', homeController.respondMedia);
-router.get("/subscribers", subscriberController.index, subscriberController.indexView);
-router.get("/subscribers/new", subscriberController.new);
-router.post("/subscribers/create", subscriberController.create, subscriberController.redirectView);
-router.get("/subscribers/:id", subscriberController.show, subscriberController.showView);
+
+router.get("/products", productController.index, productController.indexView);
+router.get("/products/new", productController.new);
+router.post("/products/create", productController.create, productController.redirectView);
+router.get("/products/:id", productController.show, productController.showView);
 
 router.get("/users", userController.index, userController.indexView);
 router.get("/users/new", userController.new);

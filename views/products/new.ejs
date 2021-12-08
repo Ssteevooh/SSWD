@@ -1,0 +1,47 @@
+<% if (loggedIn) { %>
+
+<div class="data-form">
+    <form class="form-signin" action="/products/create" method="POST">
+      <h2 class="form-signin-heading">Create a new product:</h2>
+      
+      <label for="inputName">Name <b class="d-inline text-danger">*</b> </label>
+      <input type="text" name="name" id="inputName" class="form-control" placeholder="Name..." autofocus>
+
+      <label for="inputDescription">Description <b class="d-inline text-danger">*</b> </label>
+      <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description..." required>
+
+      <label for="inputImage">Image string </label>
+      <input type="text" name="image" id="inputImage" class="form-control" placeholder="Link to image...">
+
+      <label for="inputOwner">Owner <b class="d-inline text-danger">*</b></label>
+      <input type="text" value="<%=currentUser.information%>" disabled="true" name="owner" id="inputOwner" class="form-control" placeholder="Owner" required>
+
+      <b class="d-inline text-danger">* Fields are required</b>
+      <br />
+      <br />
+      <button class="btn btn-lg btn-danger btn-block" type="submit">Add product</button>
+    </form>
+  </div>
+
+<%} else {%>
+  <div class="text-center">
+    <h2> Please login or register first </h2>
+
+    <a
+        class="btn btn-danger w-10"
+        class="button"
+        href="/users/login">
+        Login
+    </a>
+
+    <a
+        class="btn btn-danger w-10"
+        class="button"
+        href="/users/new">
+        Register
+    </a>
+  </div>
+  <br />
+  <br />
+
+<% } %>

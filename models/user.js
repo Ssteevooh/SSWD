@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Subscriber = require("./subscriber");
+const Product = require("./product");
 const passportLocalMongoose = require("passport-local-mongoose");
 const userSchema = mongoose.Schema({
     name: {
@@ -28,8 +28,10 @@ const userSchema = mongoose.Schema({
         min: [10000, "Zip code is way too short"],
         max: [99999, "Zip code is too long"]
     },
-    courses:[{type: mongoose.Schema.Types.ObjectId, ref: "Course"}],
-    subscribedAccount: {type: mongoose.Schema.Types.ObjectId, ref: "Subscriber"}
+    ownProducts: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product"
+    }]
 }, {
     timestamps:true
 });
@@ -44,25 +46,30 @@ userSchema.virtual("fullname")
     return `${this.name.first} ${this.name.last}`
 });
 
-userSchema.pre("save", function(next) {
+userSchema.virtual("information")
+.get(function() {
+    return `${this.name.first} ${this.name.last} | ${this.email}`
+});
+
+/*userSchema.pre("save", function(next) {
     let user = this;
-    if (user.subscribedAccount === undefined) {
-      Subscriber.findOne({
+    if (user.ownProducts === undefined) {
+      Product.findOne({
         email: user.email
       })
-        .then(subscriber => {
-          user.subscribedAccount = subscriber;
+        .then(product => {
+          user.ownProducts = product;
           next();
         })
         .catch(error => {
-          console.log(`Error in connecting subscriber:${error.message}`);
+          console.log(`Error in connecting Product:${error.message}`);
           next(error);
         });
     } else {
       next();
     }
 });
-
+*/
   userSchema.plugin(passportLocalMongoose, {
     usernameField: "email"
 });

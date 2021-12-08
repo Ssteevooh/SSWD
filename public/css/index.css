@@ -40,3 +40,8 @@
     background: rgb(173, 43, 69);
     border-radius: 20px;
   }
+
+  .tableImages{
+    max-width: 100px;
+    max-height: 100px;
+  }
