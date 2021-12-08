@@ -1,0 +1,19 @@
+<header id="header" class="block">
+    <h2>Hello World!</h2>
+
+    <div class="login-status">
+        <% if (loggedIn) { %>
+        <div class="bubble logged-in">
+            Logged in as <a href="<%=`/users/${currentUser._id}`%>">
+                <%= currentUser.fullname %></a>
+        </div>
+        <div class="log-out">
+            <a href="/users/logout">Log out</a>
+        </div>
+        <%} else {%>
+        <div class="bubble log-in">
+            <a href="/users/login">Log In</a>
+        </div>
+        <% } %>
+    </div>
+</header>

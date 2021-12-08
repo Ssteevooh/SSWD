@@ -1,0 +1,42 @@
+#footer {
+    background-color: crimson;
+    border: dotted royalblue;
+}
+#header {
+    background-color: crimson;
+    border: dotted royalblue;
+    height: 80px;
+}
+#subsList {
+    color: royalblue;
+}
+
+.flash {
+    background: royalblue;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    text-align: center;
+    padding: 10px 30px;
+    position: absolute;
+    top: 110px;
+  }
+.error {
+    background: crimson;
+}
+
+.login-status {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+  }
+  
+  .log-out {
+    position: absolute;
+    right: 10px;
+  }
+  
+  .login-status .bubble {
+    padding: 10px;
+    background: rgb(173, 43, 69);
+    border-radius: 20px;
+  }
