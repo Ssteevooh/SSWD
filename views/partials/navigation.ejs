@@ -1,9 +1,28 @@
-<nav id="navigation">
-  | <a href="/">Home</a> |
-  <a href="/media">Media</a> |
-  <a href="/products/new">Add product</a> |
-  <a href="/products">All products</a> |
-  <a href="/users">Users</a> |
-  <a href="/users/new">register</a> |
-  <a class="btn btn-sm btn-danger" role="button" href="/users/login" >Login</a> 
+<nav class="navabr navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">TorilTaas</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/media">Media</a></li>
+      <li><a href="/products/new">Add product</a></li>
+      <li><a href="/products">All products</a></li>
+      <li><a href="/users">Users</a></li>
+      <li><a href="/users/new">Register</a></li>
+    </ul>
+    
+  </div>
 </nav>
+
+
+
+
+<% if (loggedIn) { %>
+  <div class="loggedinText">
+      Logged in as <a href="<%=`/users/${currentUser._id}`%>">
+          <%= currentUser.fullname %></a>
+  </div>
+  <a class="btn btn-danger navbar-btn navigationButton" role="button" href="/users/logout" >Logout</a>
+  <%} else {%>
+    <a class="btn btn-danger navbar-btn navigationButton" role="button" href="/users/login" >Login</a>
+  <% } %>

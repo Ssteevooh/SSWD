@@ -14,6 +14,11 @@ const productSchema = mongoose.Schema({
     image: {
         type: String,
     },
+    price: {
+        type: Number,
+        min: [1, "Cannot sell products for free"],
+        required: true
+    },
     ownerEmail: {
         type: String,
         required: true,

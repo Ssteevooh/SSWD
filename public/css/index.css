@@ -46,6 +46,7 @@
     max-height: 100px;
   }
 
+
   .inputForm{
     width: 60vw;
     margin-left: 20vw;
@@ -59,3 +60,17 @@
   .inputFormLabel{
     margin-top: 5px;
   }
+
+.navigationButton{
+  position: fixed;
+  top: 0px;
+  right: 10px;
+}
+
+.loggedinText{
+  position: fixed;
+  top: 15px;
+  right: 90px;
+  color: rgb(157, 157, 157);
+}
+

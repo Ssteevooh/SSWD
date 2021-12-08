@@ -1,19 +1,3 @@
 <header id="header" class="block text-center">
-    <h2 class="text-dark">TorilTaas</h2>
-
-    <div class="login-status">
-        <% if (loggedIn) { %>
-        <div class="bubble logged-in">
-            Logged in as <a href="<%=`/users/${currentUser._id}`%>">
-                <%= currentUser.fullname %></a>
-        </div>
-        <div class="log-out">
-            <a href="/users/logout">Log out</a>
-        </div>
-        <%} else {%>
-        <div class="bubble log-in">
-            <a href="/users/login">Log In</a>
-        </div>
-        <% } %>
-    </div>
+    <h2 class="text-dark">Welcome to TorilTaas</h2>
 </header>
