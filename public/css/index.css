@@ -6,6 +6,7 @@
     background-color: crimson;
     border: dotted royalblue;
     height: 80px;
+    margin-top: 50px;
 }
 #subsList {
     color: royalblue;
@@ -50,6 +51,11 @@
   .inputForm{
     width: 60vw;
     margin-left: 20vw;
+  }
+
+  .inputFormLogin{
+    width: 30vw;
+    margin-left: 35vw;
   }
 
   .tableMargins{
