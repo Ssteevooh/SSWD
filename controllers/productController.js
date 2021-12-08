@@ -26,6 +26,7 @@ module.exports = {
       name: req.body.name,
       description: req.body.description,
       image: req.body.image,
+      price: req.body.price,
       ownerEmail: res.locals.currentUser.email,
       owner: res.locals.currentUser
     };
@@ -46,7 +47,8 @@ module.exports = {
     let newProduct = new Product({
       name: req.body.name,
       description: req.body.description,
-      image: req.body.image
+      image: req.body.image,
+      price: req.body.price
     });
     newProduct
       .save()

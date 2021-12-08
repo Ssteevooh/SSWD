@@ -13,6 +13,9 @@
       <label for="inputImage">Image string </label>
       <input type="text" name="image" id="inputImage" class="form-control" placeholder="Link to image...">
 
+      <label for="inputprice">Price <b class="d-inline text-danger">*</b> </label>
+      <input type="number" name="price" id="inputPrice" class="form-control" placeholder="Price..." required>
+
       <label for="inputOwner">Owner <b class="d-inline text-danger">*</b></label>
       <input type="text" value="<%=currentUser.information%>" disabled="true" name="owner" id="inputOwner" class="form-control" placeholder="Owner" required>
 

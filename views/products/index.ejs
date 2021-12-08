@@ -5,6 +5,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Image</th>
+      <th>Price</th>
       <th>Owner</th>
     </tr>
   </thead>
@@ -21,6 +22,9 @@
       </td>
       <td style="vertical-align: middle;">
         <img class="tableImages" src="<%= product.image%>" alt="">
+      </td>
+      <td style="vertical-align: middle;">
+        <%= product.price %>€
       </td>
       <td style="vertical-align: middle;">
         <%= product.ownerEmail%>
