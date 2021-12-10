@@ -80,3 +80,62 @@
   color: rgb(157, 157, 157);
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  position: absolute;
+  margin-left: calc(50vw - 300px);
+  margin-top: 100px;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+#furniture {
+  background-image: url(https://media.istockphoto.com/photos/modern-classic-black-interior-with-capitone-brown-leather-chester-picture-id1189322976?k=20&m=1189322976&s=612x612&w=0&h=8cE-iewNlmbSP9j7UJy2N6tZxBEqbH4wJSgWGxOfObI=);
+}
+
+#electronics {
+  background-image: url(https://www.yankodesign.com/images/design_news/2020/06/all-black-desk-setups-that-will-inspire-you-to-adapt-this-modern-minimal-trend/01-Black-Desk-Setup_-minimal_modern_hero3.jpg);
+}
+
+#clothes {
+  background-image: url(https://www.ilovemymates.com.au/wp-content/uploads/2019/10/black-jeans-drying.jpg);
+}
+
+#freetime {
+  background-image: url(https://nathanweltonphoto.com/wp-content/gallery/snow/20101218-nightskiing-034-edit-700e.jpg);
+}
+
+#sports {
+  background-image: url(data:image/jpeg;base64,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);
+}
+
+#others {
+  background-image: url(https://ak.picdn.net/shutterstock/videos/1027503479/thumb/1.jpg);
+}
+
+.categoryBackgroundImage {
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  filter: blur(1px);
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  cursor: pointer;
+}
+
+.categorytext {
+  z-index: 10;
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
