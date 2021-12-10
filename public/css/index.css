@@ -1,10 +1,10 @@
 #footer {
     background-color: crimson;
-    border: dotted royalblue;
+    border: solid 1px royalblue;
 }
 #header {
     background-color: crimson;
-    border: dotted royalblue;
+    border: solid 1px royalblue;
     height: 80px;
     margin-top: 50px;
 }
@@ -181,6 +181,24 @@
 .tdIndex, body, .navabr .navbar-inverse{
   transition: 0.4s;
 }
+
+h2, td, th, label, p {
+  color : #e3e3e3 !important;
+}
+
+body {
+  background-color: rgb(41, 41, 41) !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+  transition: 0.2s;
+}
+
+a {
+  transition: 0.2s;
+}
+
 
 @media screen and (max-width: 767px) {
   body {
