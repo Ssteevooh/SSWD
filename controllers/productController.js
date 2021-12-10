@@ -6,6 +6,7 @@ module.exports = {
     Product.find({})
       .then(product => {
         res.locals.product = product;
+        res.locals.title = "All products"
         res.locals.owner = res.locals.currentUser !== undefined ? res.locals.currentUser.email : '';
         next();
       })
@@ -20,9 +21,13 @@ module.exports = {
   },
 
   search: (req, res, next) => {
-    Product.find({})
+    let searchObj = {};
+    req.query.name ? searchObj.name = {$regex: `${req.query.name}`} : null;
+    req.query.category ? searchObj.category = {$regex: `${req.query.category}`} : null;
+    Product.find(searchObj)
       .then(product => {
         res.locals.product = product;
+        res.locals.title = "Search results"
         res.locals.owner = res.locals.currentUser !== undefined ? res.locals.currentUser.email : '';
         next();
       })
@@ -33,7 +38,7 @@ module.exports = {
   },
 
   searchView: (req, res) => {
-    res.render("products/search");
+    res.render("products/index");
   },
 
   new: (req, res) => {
@@ -105,8 +110,6 @@ module.exports = {
       });
   },
   delete: (req, res, next) => {
-    console.log('test');
-    console.log(req.params.id);
     let productId = req.params.id;
     Product.findByIdAndRemove(productId)
       .then(() => {
