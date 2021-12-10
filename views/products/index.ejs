@@ -30,14 +30,32 @@
       <td style="vertical-align: middle;">
         <%= product.ownerEmail%>
       </td>
+      <% if (product.ownerEmail === owner) { %>
+
+      <td style="vertical-align: middle;">
+        <a class= "btn btn-info w-10" href="mailto:<%=`${product.ownerEmail}`%>">Contact 📧</a>
+      </td>
       <td style="vertical-align: middle;">
         <a class= "btn btn-info w-10" href="<%=`/products/${product._id}/edit`%>">
-          Edit
+          Edit ⚙️
         </a>
       </td>
       <td style="vertical-align: middle;">
-        <a class= "btn btn-danger w-10" href="<%=`/products/${product._id}/delete?_method=DELETE`%>" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+        <a class= "btn btn-danger w-10"
+          href="<%=`/products/${product._id}/delete?_method=DELETE`%>"
+          onclick="return confirm('Are you sure you want to delete this product?')">
+          Delete 🗑️
+        </a>
       </td>
+      <%} else {%>
+        <td style="vertical-align: middle;">
+          <a class= "btn btn-info w-10" href="mailto:<%=`${product.ownerEmail}`%>">Contact 📧</a>
+        </td>
+        <td style="vertical-align: middle;">
+        </td>
+        <td style="vertical-align: middle;">
+        </td>
+      <% } %>
     </tr>
     <% }); %>
   </tbody>
