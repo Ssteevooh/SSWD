@@ -222,3 +222,18 @@ a {
     transition: 0.4s;
   }
 }
+
+.searchbar {
+  width: 230px;
+  left: calc(50vw - 140px);
+  top: 4vh;
+}
+
+.buttonbar {
+  width: 50px;
+  position: absolute;
+  height: 34px;
+  left: calc(50vw + 55px);
+  top: 4vh;
+  z-index: 1;
+}
