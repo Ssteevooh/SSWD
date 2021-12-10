@@ -8,6 +8,17 @@
     
           <label for="inputDescription">Description <b class="d-inline text-danger">*</b> </label>
           <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description..." value="<%= product.description %>" required>
+
+          <label class="inputFormLabel" for="inputName">Category <b class="d-inline text-danger">*</b></label>
+          <select name="category" id="category" class="form-control" required>
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="furniture">Furniture</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothes">Clothes</option>
+            <option value="freeTime">Free time</option>
+            <option value="sports">Sports</option>
+            <option value="others">Others</option>
+          </select>
     
           <label for="inputImage">Image string </label>
           <input type="text" name="image" id="inputImage" class="form-control" placeholder="Link to image..." value="<%= product.image %>">

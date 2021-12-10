@@ -6,6 +6,7 @@ module.exports = {
     Product.find({})
       .then(product => {
         res.locals.product = product;
+        res.locals.owner = res.locals.currentUser !== undefined ? res.locals.currentUser.email : '';
         next();
       })
       .catch(error => {
@@ -32,9 +33,11 @@ module.exports = {
     let productParams = {
       name: req.body.name,
       description: req.body.description,
+      category: req.body.category,
       image: req.body.image,
       price: req.body.price,
       ownerEmail: res.locals.currentUser.email,
+      ownerZipCode: res.locals.currentUser.zipCode !== undefined ? res.locals.currentUser.zipCode : '',
       owner: res.locals.currentUser._id
     };
     Product.create(productParams)
@@ -68,6 +71,7 @@ module.exports = {
       productParams = {
         name: req.body.name,
         description: req.body.description,
+        category: req.body.category,
         image: req.body.image,
       };
     Product.findByIdAndUpdate(productId, {
@@ -101,6 +105,7 @@ module.exports = {
     let newProduct = new Product({
       name: req.body.name,
       description: req.body.description,
+      category: req.body.category,
       image: req.body.image,
       price: req.body.price
     });
@@ -119,6 +124,11 @@ module.exports = {
     Product.findById(productId)
       .then(product => {
         res.locals.product = product;
+        res.locals.validator = res.locals.currentUser !== undefined
+          ? res.locals.currentUser.email === product.ownerEmail
+            ? true
+            : false
+          : false;
         next();
       })
       .catch(error => {

@@ -80,3 +80,25 @@
   color: rgb(157, 157, 157);
 }
 
+.mapouter{
+  position:relative;
+  text-align:right;
+  height:400px;
+  width:1000px;
+  margin-top: 30px;
+  margin-left: calc(50vw - 500px);
+  margin-bottom: 30px;
+}
+
+.gmap_canvas {
+  overflow:hidden;
+  background:none!important;
+  height:400px;
+  width:1000px;
+}
+
+#mapUnavailable {
+  margin-left: 5vw;
+  margin-bottom: 25px;
+  margin-top: 20px;
+}

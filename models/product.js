@@ -11,6 +11,10 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        required: true,
+    },
     image: {
         type: String,
     },
@@ -20,6 +24,10 @@ const productSchema = mongoose.Schema({
         required: true
     },
     ownerEmail: {
+        type: String,
+        required: true,
+    },
+    ownerZipCode: {
         type: String,
         required: true,
     },
