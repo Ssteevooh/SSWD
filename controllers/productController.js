@@ -19,6 +19,23 @@ module.exports = {
     res.render("products/index");
   },
 
+  search: (req, res, next) => {
+    Product.find({})
+      .then(product => {
+        res.locals.product = product;
+        res.locals.owner = res.locals.currentUser !== undefined ? res.locals.currentUser.email : '';
+        next();
+      })
+      .catch(error => {
+        console.log(`Error fetching product: ${error.message}`);
+        next(error);
+      });
+  },
+
+  searchView: (req, res) => {
+    res.render("products/search");
+  },
+
   new: (req, res) => {
     res.render("products/new");
   },

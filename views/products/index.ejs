@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Image</th>
+      <th>Category</th>
       <th>Price</th>
       <th>Owner</th>
     </tr>
@@ -18,11 +19,14 @@
           <%= product.name %>
         </a>
       </td>
-      <td style="vertical-align: middle;">
+      <td style="vertical-align: middle; max-width: 250px; text-overflow: ellipsis; overflow: hidden;">
         <%= product.description %>
       </td>
       <td style="vertical-align: middle;">
         <img class="tableImages" src="<%= product.image%>" alt="">
+      </td>
+      <td style="vertical-align: middle;">
+        <%= product.category %>
       </td>
       <td style="vertical-align: middle;">
         <%= product.price %>€
