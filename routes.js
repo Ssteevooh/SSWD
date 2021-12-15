@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const layouts = require('express-ejs-layouts');
-const Product = require("./models/product");
 const productController = require("./controllers/productController");
 const userController = require("./controllers/userController");
-const homeController = require('./controllers/homeController');
 const errorController = require('./controllers/errorController');
 const chatController = require('./controllers/chatController');
 const methodOverride = require("method-override");
@@ -48,11 +46,13 @@ router.use((req, res, next) => {
 
 router.use(layouts);
 
-router.get('/', homeController.respondWithName);
+router.get('/', (req, res) => {
+  res.render('index');
+});
 
 router.get("/products", productController.index, productController.indexView);
 router.get("/products/new", productController.new);
-router.post("/products/create", productController.create, productController.redirectView);
+router.post("/products/create", productController.create, productController.updateUser, productController.redirectView);
 router.get("/products/search", productController.search, productController.searchView);
 router.get("/products/:id/edit", productController.edit);
 router.put("/products/:id/update", productController.update, productController.redirectView);
