@@ -51,25 +51,6 @@ userSchema.virtual("information")
     return `${this.name.first} ${this.name.last} | ${this.email}`
 });
 
-/*userSchema.pre("save", function(next) {
-    let user = this;
-    if (user.ownProducts === undefined) {
-      Product.findOne({
-        email: user.email
-      })
-        .then(product => {
-          user.ownProducts = product;
-          next();
-        })
-        .catch(error => {
-          console.log(`Error in connecting Product:${error.message}`);
-          next(error);
-        });
-    } else {
-      next();
-    }
-});
-*/
   userSchema.plugin(passportLocalMongoose, {
     usernameField: "email"
 });

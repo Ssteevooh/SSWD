@@ -22,6 +22,7 @@ module.exports = {
 
   search: (req, res, next) => {
     let searchObj = {};
+    
     req.query.name ? searchObj.name = {$regex: `${req.query.name}`} : null;
     req.query.category ? searchObj.category = {$regex: `${req.query.category}`} : null;
     Product.find(searchObj)
