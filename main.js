@@ -11,6 +11,7 @@ const router = express.Router()
 const mongoose = require("mongoose");
 const Product = require("./models/product");
 const User = require("./models/user");
+const Chat = require("./models/chat");
 const productController = require("./controllers/productController");
 const userController = require("./controllers/userController");
 const homeController = require('./controllers/homeController');
@@ -79,13 +80,18 @@ router.use((req, res, next) => {
 
 io.on('connection', (socket) => {
   console.log('Connected to chat');
-
-  socket.on('chat message', (msg) => {
+  socket.on('chat message', async (msg) => {
     const messageDate = moment().format('LT');
-    io.emit('chat message', `${messageDate} | ${msg.user} : ${msg.msg}`);
-    chatController.saveMessage(msg, messageDate);
+    chatController.saveMessage(msg, messageDate)
+    const newMessage = `${messageDate} | ${msg.user} : ${msg.msg}`;
+    Chat.findOne({date: moment().format(process.env.dateFormat)})
+      .then(chat => {
+        io.emit('chat message', newMessage, chat.messages);
+    }).catch((error) => {
+      console.log(error.messages);
+      io.emit('chat message', '', []);
+    })
   });
-
   socket.on('disconnect', () => {
     console.log('Disconnected from chat');
   });

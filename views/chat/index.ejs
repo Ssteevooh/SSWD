@@ -17,7 +17,6 @@
 </script>
 
 <script>
-
     const user = "<%=user%>";
 
     const socket = io();
@@ -33,9 +32,16 @@
             input.value = '';
         }
     });
-    socket.on('chat message', function(msg) {
+    socket.on('chat message', (newMessage, msgArray) => {
+        messages.innerHTML = '';
+        for (let index = 0; index < msgArray.length; index++) {
+            const message = msgArray[index];
+            const item = document.createElement('li');
+            item.textContent = `${message.clock} | ${message.user} : ${message.message}`;
+            messages.appendChild(item);
+        }
         const item = document.createElement('li');
-        item.textContent = msg;
+        item.textContent = newMessage;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
     });
