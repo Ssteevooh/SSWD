@@ -7,6 +7,7 @@ module.exports = {
   index: (req, res, next) => {
     User.find()
       .then(user => {
+        res.locals.currentUser = res.locals.currentUser !== undefined ? res.locals.currentUser : false;
         res.locals.user = user;
         next();
       })
@@ -55,6 +56,7 @@ module.exports = {
     let userId = req.params.id;
     User.findById(userId)
       .then(user => {
+        res.locals.currentUser = res.locals.currentUser !== undefined ? res.locals.currentUser : false;
         res.locals.user = user;
         next();
       })

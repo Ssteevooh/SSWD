@@ -38,26 +38,23 @@
     </tr>
   </table>
   
-  <% if (user.subscribedAccount) { %>
-  <h4 class="center"> This user has a
-    <a href="<%=`/subscribers/${user.subscribedAccount}` %>">
-      subscribed account</a>.
-  </h4>
+  <% if (user.email === currentUser.email) { %>
+    <div style="margin-left: 5vw;">
+      <a
+        class="btn btn-info w-10"
+        class="button"
+        href="<%=`/users/${user._id}/edit`%>">
+        Edit
+      </a>
+      <a
+        class="btn btn-danger w-10"
+        class="button"
+        href="<%= `/users/${user._id}/delete?_method=DELETE` %>"
+        onclick="return confirm('Are you sure you want to delete this record?')">
+        Delete
+      </a>
+    </div>
   <% } %>
   
-  <div style="margin-left: 5vw;">
-    <a
-      class="btn btn-info w-10"
-      class="button"
-      href="<%=`/users/${user._id}/edit`%>">
-      Edit
-    </a>
-    <a
-      class="btn btn-danger w-10"
-      class="button"
-      href="<%= `/users/${user._id}/delete?_method=DELETE` %>"
-      onclick="return confirm('Are you sure you want to delete this record?')">
-      Delete
-    </a>
-  </div>
+  
 </br>

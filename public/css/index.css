@@ -208,7 +208,7 @@ a {
 
 @media screen and (max-width: 767px) {
   body {
-    margin-top: 265px !important;
+    margin-top: 107px !important;
     transition: 0.4s;
   }
   
@@ -224,8 +224,9 @@ a {
     transition: 0.4s;
   }
 
-  .navabr .navbar-inverse{
+  .nav, .navbar-nav{
     transition: 0.4s;
+    display: -webkit-box !important;
   }
 }
 
@@ -295,6 +296,8 @@ a {
 }
       
 #messages > li {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
   padding: 0.5rem 1rem;
   margin-bottom: 2px;
   background: #4d4d4d;

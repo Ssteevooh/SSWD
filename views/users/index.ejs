@@ -5,8 +5,9 @@
       <th>Name</th>
       <th>Email</th>
       <th>User name</th>
+      <% if (loggedIn) { %>
       <th>Edit</th>
-      
+      <%} %>
     </tr>
   </thead>
   <tbody>
@@ -23,14 +24,21 @@
       <td>
         <%= user.username %>
       </td>
-      <td>
-        <a class= "btn btn-info w-10" href="<%=`/users/${user._id}/edit`%>">
-          Edit
-        </a>
-      </td>
-      <td>
-        <a class= "btn btn-danger w-10" href="<%=`/users/${user._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this User?')">Delete</a>
-      </td>
+      <% if (currentUser.email === user.email) { %>
+        <td>
+          <a class= "btn btn-info w-10" href="<%=`/users/${user._id}/edit`%>">
+            Edit
+          </a>
+        </td>
+        <td>
+          <a class= "btn btn-danger w-10" href="<%=`/users/${user._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this User?')">Delete</a>
+        </td>
+      <%} else {%>
+        <td>
+        </td>
+        <td>
+        </td>
+      <% } %>
     </tr>
     <% }); %>
   </tbody>
