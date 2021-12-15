@@ -38,21 +38,6 @@ const productSchema = mongoose.Schema({
         }
 });
 
-productSchema.pre("save", function(next) {
-    let product = this;
-    User.findById(product.owner)
-        .then(user => {
-          user.ownProducts.push(product._id);
-          user.save();
-          next();
-        })
-        .catch(error => {
-          console.log(`Error in finding user:${error.message}`);
-          next(error);
-        });
-});
-
-
 productSchema.methods.getInfo = function() {
     return `
     Name: ${this.name}

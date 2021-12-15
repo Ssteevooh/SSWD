@@ -75,7 +75,6 @@ module.exports = {
       });
     }
   },
-
   edit: (req, res, next) => {
     let productId = req.params.id;
     Product.findById(productId)
@@ -109,6 +108,26 @@ module.exports = {
         console.log(`Error updating product by ID: ${error.message}`);
         next(error);
       });
+  },
+  updateUser: (req, res, next) => {
+    if (res.locals.loggedIn) {
+    const owner = res.locals.product.owner;
+    const product = res.locals.product;
+    User.findById(owner)
+    .then(user => {
+      user.ownProducts.push(product._id);
+      user.save();
+      next();
+    })
+    .catch(error => {
+      console.log(`Error in finding user:${error.message}`);
+      next(error);
+    });
+    } else {
+      req.flash("error", "Error: User logged out.");
+      res.locals.redirect = "/users/login";
+      next();
+    }
   },
   delete: (req, res, next) => {
     let productId = req.params.id;
