@@ -1,23 +1,29 @@
 require('dotenv').config();
 const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+const moment = require('moment');
 const layouts = require('express-ejs-layouts');
 const router = express.Router()
 const mongoose = require("mongoose");
 const Product = require("./models/product");
+const User = require("./models/user");
 const productController = require("./controllers/productController");
 const userController = require("./controllers/userController");
-const app = express();
 const homeController = require('./controllers/homeController');
 const errorController = require('./controllers/errorController');
+const chatController = require('./controllers/chatController');
 const methodOverride = require("method-override");
 const expressSession = require("express-session");
 const cookieParser = require("cookie-parser");
 const connectFlash = require("connect-flash");
 const passport = require("passport");
-const User = require("./models/user");
+
+
 mongoose.Promise = global.Promise;
-
-
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
 
@@ -29,7 +35,6 @@ db.once("open", (err) => {
   }
   console.log(`Database started`);
 });
-
 
 app.set('port', process.env.PORT || 3000);
 
@@ -72,6 +77,20 @@ router.use((req, res, next) => {
   next();
 });
 
+io.on('connection', (socket) => {
+  console.log('Connected to chat');
+
+  socket.on('chat message', (msg) => {
+    const messageDate = moment().format('LT');
+    io.emit('chat message', `${messageDate} | ${msg.user} : ${msg.msg}`);
+    chatController.saveMessage(msg, messageDate);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Disconnected from chat');
+  });
+});
+
 router.use(layouts);
 
 router.get('/', homeController.respondWithName);
@@ -97,13 +116,15 @@ router.put("/users/:id/update", userController.update, userController.redirectVi
 router.delete("/users/:id/delete", userController.delete, userController.redirectView);
 router.get("/users/:id", userController.show, userController.showView);
 
+router.get("/chat", chatController.index, chatController.indexView);
+
 router.use(errorController.logErrors);
 router.use(errorController.errorNoResourceFound);
 router.use(errorController.errorInternal);
 
 app.use("/", router);
 
-app.listen(
+server.listen(
     app.get('port'),
     () => {console.log(`Server is listening to PORT ${app.get('port')}`)}
 );
