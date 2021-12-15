@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const router = express.Router()
@@ -16,9 +17,9 @@ const passport = require("passport");
 const User = require("./models/user");
 mongoose.Promise = global.Promise;
 
-const uri = "mongodb+srv://admin:admin@sswd.pbkom.mongodb.net/toril_taas?retryWrites=true&w=majority";
 
-mongoose.connect(uri, { useNewUrlParser: true });
+
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
