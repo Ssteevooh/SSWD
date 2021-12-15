@@ -86,7 +86,8 @@ io.on('connection', (socket) => {
     const newMessage = `${messageDate} | ${msg.user} : ${msg.msg}`;
     Chat.findOne({date: moment().format(process.env.dateFormat)})
       .then(chat => {
-        io.emit('chat message', newMessage, chat.messages);
+        dbMessages = chat ? chat.messages : [];
+        io.emit('chat message', newMessage, dbMessages);
     }).catch((error) => {
       console.log(error.messages);
       io.emit('chat message', '', []);
