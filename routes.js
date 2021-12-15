@@ -49,7 +49,6 @@ router.use((req, res, next) => {
 router.use(layouts);
 
 router.get('/', homeController.respondWithName);
-router.get('/media', homeController.respondMedia);
 
 router.get("/products", productController.index, productController.indexView);
 router.get("/products/new", productController.new);
