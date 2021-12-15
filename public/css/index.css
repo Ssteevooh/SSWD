@@ -188,10 +188,6 @@
   margin-top: 20px;
 }
 
-.tdIndex, body, .navabr .navbar-inverse{
-  transition: 0.4s;
-}
-
 h2, td, th, label, p {
   color : #e3e3e3 !important;
 }
