@@ -1,0 +1,42 @@
+
+<ul id="messages">
+    <% messages.forEach(message => { %>
+        <li>
+            <%=message.clock%> | <%=message.user%> : <%=message.message%>
+        </li>
+    <% }); %>
+</ul>
+<form id="form" action="">
+  <input id="input" autocomplete="off" />
+  <button>
+      Send
+  </button>
+</form>
+
+<script src="http://localhost:3000/socket.io/socket.io.js">
+</script>
+
+<script>
+
+    const user = "<%=user%>";
+
+    const socket = io();
+
+    const messages = document.getElementById('messages');
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value) {
+            socket.emit('chat message', { user:user, msg: input.value });
+            input.value = '';
+        }
+    });
+    socket.on('chat message', function(msg) {
+        const item = document.createElement('li');
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+    });
+</script>
